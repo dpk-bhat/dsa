@@ -10,5 +10,4 @@ Remove Task: Complete Assignment.
 Add a Task: Call Home.
 Add a Task: Read Algorithm book
 Remove Task: Call Home.
-Search Task: xyz.
-Add a Task: wear mask
+Search Task: book.

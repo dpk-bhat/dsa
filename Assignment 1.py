@@ -27,7 +27,7 @@ def main():
         def __init__(self, task_string) -> None:
             nonlocal task_int
             task_int += 1
-            self.task_string = task_string.capitalize()
+            self.task_string = task_string
             self.task_number = "TA" + str(task_int).zfill(3)
             self.is_complete = False
         def __str__(self) -> str:
@@ -49,10 +49,7 @@ def main():
                 while temp.next != None:
                     temp = temp.next
                 temp.next = node
-            if(linked_list.head == node):
-                output_file.write("ADDED:" + task.task_number + "-" + task_string)
-                return linked_list
-            output_file.write("\nADDED:" + task.task_number + "-" + task_string)
+            output_file.write("ADDED:" + task.task_number + "-" + task_string)
             count += 1
             return linked_list
         else:
@@ -68,8 +65,7 @@ def main():
                 or temp.data.task_string == task_string
             ):
                 output_file.write(
-                    "\n"
-                    +"REMOVED:"
+                    "REMOVED:"
                     + temp.data.task_number
                     + "-"
                     + temp.data.task_string
@@ -77,18 +73,18 @@ def main():
                 linked_list.head = temp.next
                 count -= 1
             else:
-                while temp != None:
+                while temp.next != None:
                     prev = temp
                     temp = temp.next
                     if (
                         temp.data.task_number == task_number
                         or temp.data.task_string == task_string
                     ) and linked_list:
-                        output_file.write("\n"
-                            +"REMOVED:"
-                            + temp.data.task_string
-                            + "-"
+                        output_file.write(
+                            "REMOVED:"
                             + temp.data.task_number
+                            + "-"
+                            + temp.data.task_string
                         )
                         prev.next = temp.next
                         count -= 1
@@ -100,19 +96,19 @@ def main():
 
     def searchTask(linked_list, search_string=""):
         temp = linked_list.head
-        output_file.write("\nSEARCHED:" + search_string)
-        output_file.write("\n" + "-" * 60 )
+        output_file.write("SEARCHED:" + search_string)
+        output_file.write( "-" * 60 + "\n" )
         while temp != None:
             found = False
-            if search_string.lower() in temp.data.task_string.lower():
+            if search_string.strip().strip(".").lower() in temp.data.task_string.strip().lower():
                 output_file.write(
-                    "\n" + temp.data.task_number + " " + temp.data.task_string
+                    temp.data.task_number + " " + temp.data.task_string
                 )
                 found = True
             temp = temp.next
         if not found:
-            output_file.write("\nTASK NOT FOUND")
-        output_file.write("\n" + "-" * 60 )
+            output_file.write("\nTASK NOT FOUND\n")
+        output_file.write("-" * 60 + "\n" )
 
     def completeTask(linked_list, task_string="", task_number=""):
         if task_string or task_number:
@@ -123,7 +119,7 @@ def main():
             ):
                 temp.data.is_complete = True
                 output_file.write(
-                    "\nCOMPLETED:" + temp.data.task_number + "-" + task_string
+                    "COMPLETED:" + temp.data.task_number + "-" + task_string
                 )
             else:
                 while temp.next != None:
@@ -133,11 +129,10 @@ def main():
                     ):
                         temp.data.is_complete = True
                         output_file.write(
-                            +"\nCOMPLETED:"
+                            +"COMPLETED:"
                             + temp.data.task_number
                             + "-"
                             + task_string
-                            + "\n"
                         )
                     temp = temp.next
 
@@ -150,7 +145,7 @@ def main():
             ):
                 temp.data.is_complete = False
                 output_file.write(
-                    "\nUNCOMPLETED:" + temp.data.task_number + "-" + task_string
+                    "UNCOMPLETED:" + temp.data.task_number + "-" + task_string
                 )
             else:
                 while temp.next != None:
@@ -160,7 +155,7 @@ def main():
                     ):
                         temp.data.is_complete = False
                         output_file.write(
-                            "\nUNCOMPLETED:"
+                            "UNCOMPLETED:"
                             + temp.data.task_number
                             + "-"
                             + task_string
@@ -170,9 +165,8 @@ def main():
     def statusTask(linked_list):
         # append to file
         output_file.write(
-            "\nTask-Number".ljust(15) + "Task-String".ljust(30) + "Task-Status"
+            "Task-Number".ljust(15) + "Task-String".ljust(30) + "Task-Status" + "\n"+"-" * 60
         )
-        output_file.write("\n"+"-" * 60)
         # Print all the task in the linked list
         temp = linked_list.head
         while temp.next != None:
@@ -184,11 +178,11 @@ def main():
                 + status
             )
             temp = temp.next
-        output_file.write("\n" + "-" * 60)
+        output_file.write("\n" + "-" * 60 + "\n")
 
     def invalidInput():
         # print invalid input
-        output_file.write("\nInvalid Input")
+        output_file.write("Invalid Input")
 
     def print_linked_list(linked_list):
         head = linked_list.head
@@ -204,8 +198,7 @@ def main():
         for line in lines:
             instruction, task_string = line.split(":")
             instruction = instruction.strip().lower()
-            task_string = task_string.strip().strip(".").capitalize()
-            
+
             if instruction == "add a task":
                 linked_list = addTask(linked_list, task_string)
                 print_linked_list(linked_list)
@@ -227,7 +220,7 @@ def main():
             else:
                 invalidInput()
             print(count)
-
+        
     initiateToDoList("C:\BITS\Sem 2\DSA\Assignemnt 1\inputPS5.txt")
 
 
