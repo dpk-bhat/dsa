@@ -1,0 +1,23 @@
+ADDED:TA001-Complete assignment
+ADDED:TA002-Return library books
+ADDED:TA003-Book a ticket
+ADDED:TA004-Wish birthday
+REMOVED:Wish birthday-TA004
+COMPLETED:TA001-Complete assignment
+Task-Number    Task-String                   Task-Status
+------------------------------------------------------------
+TA001          Complete assignme             C
+TA002          Return library boo            I
+------------------------------------------------------------
+UNCOMPLETED:TA001-Complete assignment
+REMOVED:TA001-Complete assignment
+ADDED:TA005-Call home
+ADDED:TA006-Read algorithm book
+REMOVED:Call home-TA005
+SEARCHED:Book
+------------------------------------------------------------
+TA002 Return library books
+TA003 Book a ticket
+TA006 Read algorithm book
+------------------------------------------------------------
+ADDED:TA007-Wear mask
