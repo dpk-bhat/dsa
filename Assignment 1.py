@@ -1,5 +1,5 @@
 def main():
-    output_file = open("outputPS5.txt", "w")
+    output_file = open("C:\\Users\\I526703\\Desktop\\DSA assignment\\dsa\\outputPS5.txt", "w")
     task_int = 0
     count = 0
 
@@ -18,7 +18,7 @@ def main():
             self.head = None
 
         def is_empty(self):
-            return True if self.head else False
+            return True if self.head == None else False
 
         def __sizeof__(self) -> int:
             return count
@@ -40,8 +40,8 @@ def main():
             # if there are no nodes, create a linked list
             task = Task(task_string)
             node = Node(task, None)
-            if linked_list == None:
-                linked_list = LinkedList()
+            if linked_list.is_empty():
+                # linked_list = LinkedList()
                 linked_list.head = node
             # else append a node to exsisting linked list
             else:
@@ -97,7 +97,7 @@ def main():
     def searchTask(linked_list, search_string=""):
         temp = linked_list.head
         output_file.write("SEARCHED:" + search_string)
-        output_file.write( "-" * 60 + "\n" )
+        output_file.write( "\n"+"-" * 60 + "\n" )
         while temp != None:
             found = False
             if search_string.strip().strip(".").lower() in temp.data.task_string.strip().lower():
@@ -179,10 +179,7 @@ def main():
             )
             temp = temp.next
         output_file.write("\n" + "-" * 60 + "\n")
-
-    def invalidInput():
-        # print invalid input
-        output_file.write("Invalid Input")
+        
 
     def print_linked_list(linked_list):
         head = linked_list.head
@@ -193,7 +190,8 @@ def main():
     def initiateToDoList(read_input_file):
         file = open(read_input_file, "r")
         lines = file.readlines()
-        linked_list = None
+        #initializing empty linked list object
+        linked_list = LinkedList()
         nonlocal count
         for line in lines:
             instruction, task_string = line.split(":")
@@ -203,11 +201,17 @@ def main():
                 linked_list = addTask(linked_list, task_string)
                 print_linked_list(linked_list)
             elif instruction == "remove task":
-                linked_list = removeTask(linked_list, task_string)
-                print_linked_list(linked_list)
+                if linked_list.is_empty():
+                    output_file.write("Invalid Input: No task performed")
+                else:
+                    linked_list = removeTask(linked_list, task_string)
+                    print_linked_list(linked_list)
             elif instruction == "search task":
-                searchTask(linked_list, task_string)
-                print_linked_list(linked_list)
+                if linked_list.is_empty():
+                    output_file.write("No task found")
+                else:
+                    searchTask(linked_list, task_string)
+                    print_linked_list(linked_list)
             elif instruction == "mark complete":
                 completeTask(linked_list, task_string)
                 print_linked_list(linked_list)
@@ -215,13 +219,16 @@ def main():
                 incompleteTask(linked_list, task_string)
                 print_linked_list(linked_list)
             elif instruction == "task status":
-                statusTask(linked_list)
-                print_linked_list(linked_list)
+                if linked_list.is_empty():
+                    output_file.write("No task found")
+                else:
+                    statusTask(linked_list)
+                    print_linked_list(linked_list)
             else:
                 invalidInput()
             print(count)
         
-    initiateToDoList("C:\BITS\Sem 2\DSA\Assignemnt 1\inputPS5.txt")
+    initiateToDoList("C:\\Users\\I526703\\Desktop\\DSA assignment\\dsa\\inputPS5.txt")
 
 
 main()
