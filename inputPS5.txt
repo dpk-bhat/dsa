@@ -1,3 +1,4 @@
+Remove Task: Wish Birthday
 Add a Task: Complete Assignment.
 Add a Task: Return Library Books.
 Add a Task: Book a ticket.
