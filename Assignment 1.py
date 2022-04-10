@@ -1,6 +1,7 @@
 def main():
     output_file = open("outputPS5.txt", "w")
     task_int = 0
+    linked_list = None
 
     """
     Below is the implementation of Task
@@ -276,7 +277,7 @@ def main():
             else:
                 log_error("TASK STRING AND TASK NUMBER IS EMPTY")
 
-    def statusTask(linked_list):
+    def statusTask():
         if linked_list.is_empty():
             log_error("LINKED LIST IS EMPTY.")
         # Append to file
@@ -316,6 +317,8 @@ def main():
     """
 
     def initiateToDoList(read_input_file):
+        nonlocal linked_list
+        linked_list = LinkedList()
         # Read the input file and process each line
         file = open(read_input_file, "r")
         lines = file.readlines()
@@ -335,7 +338,7 @@ def main():
             elif instruction == "mark incomplete":
                 incompleteTask(task_string)
             elif instruction == "task status":
-                statusTask(linked_list)
+                statusTask()
             else:
                 log_error("INVALID INSTRUCTION")
             
@@ -344,7 +347,6 @@ def main():
             print_linked_list(linked_list)
             """
 
-    linked_list = LinkedList()
     initiateToDoList("inputPS5.txt")
 
     # Close the output file after writing
