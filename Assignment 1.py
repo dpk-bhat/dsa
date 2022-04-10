@@ -1,4 +1,4 @@
-def main():
+def ToDoList():
     output_file = open("outputPS5.txt", "w")
     task_int = 0
     linked_list = None
@@ -352,4 +352,4 @@ def main():
     # Close the output file after writing
     output_file.close()
 
-main()
+ToDoList()
