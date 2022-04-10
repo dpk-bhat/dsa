@@ -202,29 +202,18 @@ def main():
                 temp = linked_list.get_head()
                 task_to_complete = Task(task_string, task_number)
                 """
-                If the head is the task, mark it as complete and write to file
-                Else check the linked list for the task
+                Check the linked list for the task
+                If found, mark as complete and write to output file
+                Else write the same in output file
                 """
-                if task_to_complete == temp.data:
-                    found = True
-                    temp.data.is_complete = True
-                    output_file.write(
-                        "COMPLETED:" + temp.data.task_number + "-" + task_string
-                    )
-                else:
-                    """
-                    Check the linked list for the task
-                    If found, mark as complete and write to output file
-                    Else write the same in output file
-                    """
-                    while temp.next != None:
-                        if task_to_complete == temp.data:
-                            found = True
-                            temp.data.is_complete = True
-                            output_file.write(
-                                +"COMPLETED:" + temp.data.task_number + "-" + task_string
-                            )
-                        temp = temp.next
+                while temp.next != None:
+                    if task_to_complete == temp.data:
+                        found = True
+                        temp.data.is_complete = True
+                        output_file.write(
+                            "COMPLETED:" + temp.data.task_number + "-" + task_string
+                        )
+                    temp = temp.next
                 if not found:
                     log_error(f"CANNOT MARK COMPLETE: TASK {task_to_complete.task_string.strip()} NOT FOUND")
             else:
@@ -242,29 +231,18 @@ def main():
                 temp = linked_list.get_head()
                 task_to_incomplete = Task(task_string, task_number)
                 """
-                If the head is the task, mark it as incomplete and write to file
-                Else check the linked list for the task
+                Check the linked list for the task
+                If found, mark as complete and write to output file
+                Else write the same in output file
                 """
-                if task_to_incomplete == temp.data:
-                    found = True
-                    temp.data.is_complete = False
-                    output_file.write(
-                        "UNCOMPLETED:" + temp.data.task_number + "-" + task_string
-                    )
-                else:
-                    """
-                    Check the linked list for the task
-                    If found, mark as complete and write to output file
-                    Else write the same in output file
-                    """
-                    while temp.next != None:
-                        if task_to_incomplete == temp.data:
-                            found = True
-                            temp.data.is_complete = False
-                            output_file.write(
-                                "UNCOMPLETED:" + temp.data.task_number + "-" + task_string
-                            )
-                        temp = temp.next
+                while temp.next != None:
+                    if task_to_incomplete == temp.data:
+                        found = True
+                        temp.data.is_complete = False
+                        output_file.write(
+                            "UNCOMPLETED:" + temp.data.task_number + "-" + task_string
+                        )
+                    temp = temp.next
                 if not found:
                     log_error(f"CANNOT MARK INCOMPLETE TASK {task_to_incomplete.task_string.strip()} NOT FOUND")
             else:
@@ -299,7 +277,7 @@ def main():
         output_file.write(error_message+ "\n")
 
     """
-    Function to debug
+    Function for debuggging
     def print_linked_list(linked_list):
         temp = linked_list.get_head()
         while temp:
@@ -335,7 +313,7 @@ def main():
             else:
                 log_error("INVALID INSTRUCTION")
             """
-            Printing linked list after each operation
+            Printing linked list after each operation for debugging
             print_linked_list(linked_list)
             """
     initiateToDoList("inputPS5.txt")
