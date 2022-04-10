@@ -1,17 +1,14 @@
-from os import link
-
-
 def main():
     output_file = open("outputPS5.txt", "w")
     task_int = 0
 
-"""
-Below is the implementation of Task
-A Task contains task_string, task_number and is_complete field
-Task.task_string will contain the task description
-Task.task_number will contain a unique ID
-Task.is_complete will indicate if the task is marked as complete or not
-"""
+    """
+    Below is the implementation of Task
+    A Task contains task_string, task_number and is_complete field
+    Task.task_string will contain the task description
+    Task.task_number will contain a unique ID
+    Task.is_complete will indicate if the task is marked as complete or not
+    """
     class Task:
         def __init__(self, task_string, task_number="") -> None:
             nonlocal task_int
@@ -37,12 +34,12 @@ Task.is_complete will indicate if the task is marked as complete or not
             else:
                 return False
 
-"""
-Below is the implementation of Node
-A Node contains data and next field
-Node.data will have a Task object
-Node.next will have None, which will be replaced by address of next Task
-"""
+    """
+    Below is the implementation of Node
+    A Node contains data and next field
+    Node.data will have a Task object
+    Node.next will have None, which will be replaced by address of next Task
+    """
     class Node:
         def __init__(self, data, next=None) -> None:
             self.data = data
@@ -51,14 +48,14 @@ Node.next will have None, which will be replaced by address of next Task
         def __str__(self) -> str:
             return str(self.data)
 
-"""
-Below is the implementaion of Linked List.
-A Linked List contains head, tail and count field
-LinkedList.head will contain address of the first node
-LinkedList.tail will contain address of the last node
-LinkedList.count will contain the number of nodes presenet in the linked list
-This class provides funtion for basic funtionalities i.e. append, find and remove
-"""
+    """
+    Below is the implementaion of Linked List.
+    A Linked List contains head, tail and count field
+    LinkedList.head will contain address of the first node
+    LinkedList.tail will contain address of the last node
+    LinkedList.count will contain the number of nodes presenet in the linked list
+    This class provides funtion for basic funtionalities i.e. append, find and remove
+    """
     class LinkedList:
 
         def __init__(self) -> None:
