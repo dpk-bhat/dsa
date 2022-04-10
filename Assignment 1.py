@@ -5,11 +5,13 @@ def main():
     output_file = open("outputPS5.txt", "w")
     task_int = 0
 
-# Below is the implementation of Task
-# A Task contains task_string, task_number and is_complete field
-# Task.task_string will contain the task description
-# Task.task_number will contain a unique ID
-# Task.is_complete will indicate if the task is marked as complete or not
+"""
+Below is the implementation of Task
+A Task contains task_string, task_number and is_complete field
+Task.task_string will contain the task description
+Task.task_number will contain a unique ID
+Task.is_complete will indicate if the task is marked as complete or not
+"""
     class Task:
         def __init__(self, task_string, task_number="") -> None:
             nonlocal task_int
@@ -35,10 +37,12 @@ def main():
             else:
                 return False
 
-# Below is the implementation of Node
-# A Node contains data and next field
-# Node.data will have a Task object
-# Node.next will have None, which will be replaced by address of next Task
+"""
+Below is the implementation of Node
+A Node contains data and next field
+Node.data will have a Task object
+Node.next will have None, which will be replaced by address of next Task
+"""
     class Node:
         def __init__(self, data, next=None) -> None:
             self.data = data
@@ -47,12 +51,14 @@ def main():
         def __str__(self) -> str:
             return str(self.data)
 
-# Below is the implementaion of Linked List.
-# A Linked List contains head, tail and count field
-# LinkedList.head will contain address of the first node
-# LinkedList.tail will contain address of the last node
-# LinkedList.count will contain the number of nodes presenet in the linked list
-# This class provides funtion for basic funtionalities i.e. append, find and remove
+"""
+Below is the implementaion of Linked List.
+A Linked List contains head, tail and count field
+LinkedList.head will contain address of the first node
+LinkedList.tail will contain address of the last node
+LinkedList.count will contain the number of nodes presenet in the linked list
+This class provides funtion for basic funtionalities i.e. append, find and remove
+"""
     class LinkedList:
 
         def __init__(self) -> None:
@@ -72,9 +78,11 @@ def main():
         def append(self, task):
             node = Node(task, None)
             try:
-                # Assign the node as head of linked list if linked list is empty
-                # Else append the node to tail
-                # return the newly appended task
+                """
+                Assign the node as head of linked list if linked list is empty
+                Else append the node to tail
+                return the newly appended task
+                """
                 if self.is_empty():
                     self.head = node
                     self.tail = node
@@ -89,14 +97,18 @@ def main():
         def remove(self, task):
             temp = self.head
             try:
-                # If the linked list is empty log the error and return nothing
-                # Else search and remove the task from the linked list
+                """
+                If the linked list is empty log the error and return nothing
+                Else search and remove the task from the linked list
+                """
                 if temp == None:
                     log_error("LINKED LIST IS EMPTY")
                 else:
-                    # If the head is the task to be removed, remove task and reassign head to next node
-                    # Else search and remove the task from the llinked list
-                    # Return the removed task
+                    """
+                    If the head is the task to be removed, remove task and reassign head to next node
+                    Else search and remove the task from the llinked list
+                    Return the removed task
+                    """
                     if temp.data == task:
                         self.head = self.head.next
                         self.count -=1
@@ -119,9 +131,11 @@ def main():
             temp = self.head
             found_tasks = []
             try:
-                # If the linked list is empty log the error and return nothing
-                # Else search for the task in the linked list
-                # Return list of tasks found
+                """
+                If the linked list is empty log the error and return nothing
+                Else search for the task in the linked list
+                Return list of tasks found
+                """
                 if temp == None:
                     log_error("LINKED LIST IS EMPTY")
                 else:
@@ -165,9 +179,11 @@ def main():
             task_to_find = Task(search_string.strip().strip("."))
             output_file.write("SEARCHED:" + search_string + "-" * 60 + "\n")
             found_tasks = linked_list.find(task_to_find)
-            # Check if found_tasks list has any object
-            # If yes, write it's elements to output file
-            # Else write the same in output file
+            """
+            Check if found_tasks list has any object
+            If yes, write it's elements to output file
+            Else write the same in output file
+            """
             if found_tasks != None and found_tasks!= []:
                 for task in found_tasks:
                     output_file.write(task.task_number + " " + task.task_string)
@@ -188,8 +204,10 @@ def main():
                 found = False
                 temp = linked_list.get_head()
                 task_to_complete = Task(task_string, task_number)
-                # If the head is the task, mark it as complete and write to file
-                # Else check the linked list for the task
+                """
+                If the head is the task, mark it as complete and write to file
+                Else check the linked list for the task
+                """
                 if task_to_complete == temp.data:
                     found = True
                     temp.data.is_complete = True
@@ -197,9 +215,11 @@ def main():
                         "COMPLETED:" + temp.data.task_number + "-" + task_string
                     )
                 else:
-                    # Check the linked list for the task
-                    # If found, mark as complete and write to output file
-                    # Else write the same in output file
+                    """
+                    Check the linked list for the task
+                    If found, mark as complete and write to output file
+                    Else write the same in output file
+                    """
                     while temp.next != None:
                         if task_to_complete == temp.data:
                             found = True
@@ -224,8 +244,10 @@ def main():
                 found = False
                 temp = linked_list.get_head()
                 task_to_incomplete = Task(task_string, task_number)
-                # If the head is the task, mark it as incomplete and write to file
-                # Else check the linked list for the task
+                """
+                If the head is the task, mark it as incomplete and write to file
+                Else check the linked list for the task
+                """
                 if task_to_incomplete == temp.data:
                     found = True
                     temp.data.is_complete = False
@@ -233,9 +255,11 @@ def main():
                         "UNCOMPLETED:" + temp.data.task_number + "-" + task_string
                     )
                 else:
-                    # Check the linked list for the task
-                    # If found, mark as complete and write to output file
-                    # Else write the same in output file
+                    """
+                    Check the linked list for the task
+                    If found, mark as complete and write to output file
+                    Else write the same in output file
+                    """
                     while temp.next != None:
                         if task_to_incomplete == temp.data:
                             found = True
@@ -277,14 +301,16 @@ def main():
         # Append appropriate error message to the output file
         output_file.write(error_message+ "\n")
 
-    # Function to debug
-    # def print_linked_list(linked_list):
-    #     temp = linked_list.get_head()
-    #     while temp:
-    #         print(f"{temp.data} ->", end="")
-    #         print(" " + str(linked_list.count))
-    #         temp = temp.next
-    #     print()
+    """
+    Function to debug
+    def print_linked_list(linked_list):
+        temp = linked_list.get_head()
+        while temp:
+            print(f"{temp.data} ->", end="")
+            print(" " + str(linked_list.count))
+            temp = temp.next
+        print()
+    """
 
     def initiateToDoList(read_input_file):
         # Read the input file and process each line
@@ -311,12 +337,13 @@ def main():
                 statusTask(linked_list)
             else:
                 log_error("INVALID INSTRUCTION")
-            # Printing linked list after each operation
-            # print_linked_list(linked_list)
-
+            """
+            Printing linked list after each operation
+            print_linked_list(linked_list)
+            """
     initiateToDoList("inputPS5.txt")
 
-    # Close the output file after 
+    # Close the output file after writing
     output_file.close()
 
 main()
