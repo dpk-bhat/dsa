@@ -1,24 +1,25 @@
-ADDED:TA001- Complete Assignment.
-ADDED:TA002- Return Library Books.
-ADDED:TA003- Book a ticket.
-ADDED:TA004- Wish Birthday
-REMOVED:TA004- Wish Birthday
-COMPLETED:TA001- Complete Assignment.
+LINKED LIST IS EMPTY
+TASK :Wish Birthday WAS NOT FOUND
+ADDED:TA002- Complete Assignment.
+ADDED:TA003- Return Library Books.
+ADDED:TA004- Book a ticket.
+ADDED:TA005- Wish Birthday
+REMOVED:TA005- Wish Birthday
+COMPLETED:TA002- Complete Assignment.
 Task-Number    Task-String                   Task-Status
 ------------------------------------------------------------
-TA001           Complete Assignment          C
-TA002           Return Library Books         I
+TA002           Complete Assignment          C
+TA003           Return Library Books         I
 ------------------------------------------------------------
-UNCOMPLETED:TA001- Complete Assignment.
-REMOVED:TA001- Complete Assignment.
-ADDED:TA005- Call Home.
-ADDED:TA006- Read Algorithm book
-REMOVED:TA005- Call Home.
+UNCOMPLETED:TA002- Complete Assignment.
+REMOVED:TA002- Complete Assignment.
+ADDED:TA010- Call Home.
+ADDED:TA011- Read Algorithm book
+REMOVED:TA010- Call Home.
 SEARCHED: book.
-
 ------------------------------------------------------------
-TA002  Return Library Books.
-TA003  Book a ticket.
-TA006  Read Algorithm book
+TA003  Return Library Books.
+TA004  Book a ticket.
+TA011  Read Algorithm book
 ------------------------------------------------------------
-ADDED:TA007- wear mask.
+ADDED:TA014- wear mask.
